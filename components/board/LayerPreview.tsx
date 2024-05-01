@@ -6,6 +6,7 @@ import { memo } from "react";
 import { Rectangle } from "./Rectangle";
 import { Circle } from "./Circle";
 import { Text } from "./Text";
+import { Page } from "./Page";
 
 interface Props {
   id: string;
@@ -46,6 +47,15 @@ export const LayerPreview = memo(
             layer={layer}
             onPointerDown={onLayerPointerDown}
             selectionColor={selectionColor}
+          />
+        );
+      case LayerType.Page:
+        return (
+          <Page
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={"#fff"}
           />
         );
       default:

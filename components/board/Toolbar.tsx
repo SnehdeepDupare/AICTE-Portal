@@ -6,6 +6,7 @@ import {
   Square,
   Type,
   Undo2,
+  RectangleVertical,
 } from "lucide-react";
 import { ToolButton } from "./ToolButton";
 import { CanvasMode, CanvasState, LayerType } from "@/types/canvas";
@@ -82,6 +83,20 @@ export default function Toolbar({
           isActive={
             canvasState.mode === CanvasMode.Inserting &&
             canvasState.layerType === LayerType.Circle
+          }
+        />
+        <ToolButton
+          label="Page"
+          icon={RectangleVertical}
+          onClick={() =>
+            setCanvasState({
+              mode: CanvasMode.Inserting,
+              layerType: LayerType.Page,
+            })
+          }
+          isActive={
+            canvasState.mode === CanvasMode.Inserting &&
+            canvasState.layerType === LayerType.Page
           }
         />
         <ToolButton

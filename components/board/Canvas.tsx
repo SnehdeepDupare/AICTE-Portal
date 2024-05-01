@@ -66,7 +66,11 @@ export default function Canvas({ boardId }: CanvasProps) {
   const insertLayer = useMutation(
     (
       { storage, setMyPresence },
-      layerType: LayerType.Circle | LayerType.Rectangle | LayerType.Text,
+      layerType:
+        | LayerType.Circle
+        | LayerType.Rectangle
+        | LayerType.Text
+        | LayerType.Page,
       position: Point
     ) => {
       const liveLayers = storage.get("layers");
@@ -80,8 +84,8 @@ export default function Canvas({ boardId }: CanvasProps) {
         type: layerType,
         x: position.x,
         y: position.y,
-        height: 100,
-        width: 100,
+        height: layerType === LayerType.Page ? 650 : 100,
+        width: layerType === LayerType.Page ? 400 : 100,
         fill: lastUsedColor,
       });
 

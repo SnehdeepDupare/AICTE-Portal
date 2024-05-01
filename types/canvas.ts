@@ -14,10 +14,21 @@ export enum LayerType {
   Circle,
   Path,
   Text,
+  Page,
 }
 
 export type RectangleLayer = {
   type: LayerType.Rectangle;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+  fill: Color;
+  value?: string;
+};
+
+export type PageLayer = {
+  type: LayerType.Page;
   x: number;
   y: number;
   height: number;
@@ -91,7 +102,11 @@ export type CanvasState =
     }
   | {
       mode: CanvasMode.Inserting;
-      layerType: LayerType.Circle | LayerType.Rectangle | LayerType.Text;
+      layerType:
+        | LayerType.Circle
+        | LayerType.Rectangle
+        | LayerType.Text
+        | LayerType.Page;
     }
   | {
       mode: CanvasMode.Pressing;
@@ -112,4 +127,4 @@ export enum CanvasMode {
   Resizing,
 }
 
-export type Layer = RectangleLayer | CircleLayer | TextLayer;
+export type Layer = RectangleLayer | CircleLayer | TextLayer | PageLayer;
