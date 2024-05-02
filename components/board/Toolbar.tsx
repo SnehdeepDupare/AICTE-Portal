@@ -99,12 +99,12 @@ export default function Toolbar({
             canvasState.layerType === LayerType.Page
           }
         />
-        <ToolButton
+        {/* <ToolButton
           label="Image"
           icon={Image}
           onClick={() => {}}
           isActive={false}
-        />
+        /> */}
       </div>
       <div className="bg-white rounded-md p-1.5 flex flex-col items-center shadow-md">
         <ToolButton

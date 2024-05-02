@@ -17,8 +17,8 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 
 import { contactSchema } from "@/lib/validations/contact";
-// import { sendEmail } from "@/actions/sendEmail";
-// import toast from "react-hot-toast";
+import { sendEmail } from "@/actions/sendEmail";
+import { toast } from "sonner";
 
 function ContactForm() {
   const form = useForm<z.infer<typeof contactSchema>>({
@@ -32,24 +32,24 @@ function ContactForm() {
     },
   });
 
-  //   async function onSubmit(values: z.infer<typeof contactSchema>) {
-  //     const result = await sendEmail(values);
+  async function onSubmit(values: z.infer<typeof contactSchema>) {
+    const result = await sendEmail(values);
 
-  //     if (result?.success && result?.data?.data?.id) {
-  //       toast.success("Email sent successfully");
-  //       form.reset();
-  //       return;
-  //     }
+    if (result?.success && result?.data?.data?.id) {
+      toast.success("Email sent successfully");
+      form.reset();
+      return;
+    }
 
-  //     if (result?.data?.error) {
-  //       toast.error(`${result?.data?.error?.message}`);
-  //     }
-  //   }
+    if (result?.data?.error) {
+      toast.error(`${result?.data?.error?.message}`);
+    }
+  }
 
   return (
     <Form {...form}>
       <form
-        // onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 flex flex-col"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
